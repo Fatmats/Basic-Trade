@@ -1,7 +1,13 @@
 <template>
   <div class="container">
+    <b-form-select
+      class="mt-4"
+      v-model="selected"
+      :options="options"
+    ></b-form-select>
+    <hr />
     <div class="row">
-      <div class="col mb-md-4 p-0" v-for="pro in products" :key="pro.title">
+      <div class="col mb-md-4 p-0" v-for="pro in filtred" :key="pro.title">
         <div class="card mr-1" style="height: 22rem; width: 15rem">
           <img
             :src="pro.image"
@@ -9,29 +15,22 @@
             alt="..."
             style="
               height: 48%;
-              width: 60%;
-              margin-left: auto;
-              margin-right: auto;
+              width: 98%;
+              padding-left: auto;
               margin-top: 10px;
               object-fit: contain;
+              background-color: white;
             "
           />
-
           <div class="card-body p-0">
             <div class="card-title">
               <h5 style="font-size: unset">
                 {{ pro.title }}
               </h5>
+              <p>${{ pro.price }}</p>
             </div>
-            <div class="price h5">
-              <p class="float-left p-2 bg-danger">{{ pro.price }}$</p>
-              <b-icon-cart-4
-                style="width: 72px; height: 41px"
-                class="icon float-right bg-info"
-                
-                @click="add(pro)"
-              ></b-icon-cart-4>
-             
+            <div class="price">
+              <button class="icon" @click="add(pro)">Ekle</button>
             </div>
           </div>
         </div>
@@ -43,9 +42,19 @@
 <script>
 import { mapActions, mapMutations } from "vuex";
 export default {
+prompt:["removed"],
   data() {
     return {
       products: [],
+      list: [],
+      selected: null,
+      options: [
+        { value: null, text: "Lütfen Görmek İstediğiniz kategoriyi seçin" },
+        { value: "men clothing", text: "men clothing" },
+        { value: "jewelery", text: "jewelery" },
+        { value: "electronic", text: "electronic" },
+        { value: "women clothing", text: "women clothing" },
+      ],
     };
   },
   methods: {
@@ -57,20 +66,45 @@ export default {
         console.log(this.products);
       });
     },
-    add(pro){
-      console.log(pro);
-      this.MutPro(pro)
-    }
+    add: function (pro) {
+      if(this.$cookies.isKey("post")){
+     this.list= JSON.parse(this.$cookies.get("post")) 
+     this.list.push(pro);
+      }
+      else{
+     this.list.push(pro);
+      }
+      
+      this.MutPro(this.list);
+      console.log(this.list);
+    },
+  },
+  computed: {
+    filtred() {
+      return this.products.filter((e) => {
+        return e.category.match(this.selected);
+      });
+    },
   },
   mounted() {
     this.fetch();
+   
   },
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped >
+$rainbow: linear-gradient(
+  90deg,
+  #fc87da 0%,
+  #cb94ef 30%,
+  #41e0e7 76%,
+  #28f6c2 100%
+);
 .card {
-  box-shadow: inset 0px 0px 3px 1px black;
+  color: #a05841;
+  border: 2px solid;
+  border-image: linear-gradient(to right, #fc87da, #cb94ef, #41e0e7, #28f6c2) 30;
 }
 .card-title {
   display: block;
@@ -81,18 +115,19 @@ export default {
 }
 .price {
   position: relative !important;
-  padding: 1px;
+
   display: block;
-  top: 38.5px;
-  background-color: rgba(255, 0, 0, 0.349);
-  
+  top: 42.5px;
 }
-p {
-  width: 86px;
-  height: 41px;
-  padding-top: 9px;
-}
+
 .icon {
   cursor: pointer;
+  padding-inline: 104px;
+  padding-block: 7px;
+  background-image: $rainbow;
+  display: block;
+  border: none;
+  color: #FDFFB6;
+  font-weight: bold;
 }
 </style>

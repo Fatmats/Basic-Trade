@@ -9,6 +9,19 @@ import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
 import router from './router'
 import VueCookies from 'vue-cookies'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueSweetalert2 from 'vue-sweetalert2';
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.use(VueSweetalert2)
+
+library.add(faShoppingBasket)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueCookies)
 
 // set default config

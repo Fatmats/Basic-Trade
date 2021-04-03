@@ -175,6 +175,54 @@
       "price": "100",
       "title": "Gözlük",
       "id": 22
+    },
+    {
+      "category": "electronic",
+      "description": "Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "image": "https://cdn.dsmcdn.com/mnresize/415/622/ty17/product/media/images/20201022/11/18957571/63938321/1/1_org_zoom.jpg",
+      "price": "150",
+      "title": "Xiaomi Mi Wifi Pro Sinyal Yakınlaştırıcı Türkiye Uyumlu Global Versiyon 300 Mbps Mı-wıfı-pro",
+      "id": 23
+    },
+    {
+      "category": "electronic",
+      "description": "industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer too",
+      "image": "https://productimages.hepsiburada.net/s/58/500/11311686418482.jpg",
+      "price": "50",
+      "title": "Rampage Spear 7200 Dpı Rgb Ledli Makrolu Gaming Oyuncu Mouse SMX-G68",
+      "id": 24
+    },
+    {
+      "category": "jewelery",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled ",
+      "image": "http://www.storks.com.tr/resim/urun/ELR04879-001.jpg",
+      "price": "150",
+      "title": " Elmas Yüzük",
+      "id": 25
+    },
+    {
+      "category": "women clothing",
+      "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "image": "https://cdn.kadin.com/wp-content/uploads/2016/12/Y%C4%B1lba%C5%9F%C4%B1-K%C4%B1yafet-%C3%96nerileri-7.jpg",
+      "price": "150",
+      "title": "Kırmızı kısa gece elbisesi",
+      "id": 26
+    },
+    {
+      "category": "",
+      "description": "",
+      "image": "",
+      "price": "",
+      "title": "",
+      "id": 27
+    },
+    {
+      "category": "men clothing",
+      "description": "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ",
+      "image": "https://img-asicsweb.mncdn.com/Content/Images/Thumbs/0021008_bomber-jacket-erkek-ceket-yelek-154593-0014.jpeg",
+      "price": "100",
+      "title": " Asics Türkiye Resmi Web Sitesi BOMBER JACKET ERKEK GIYIM CEKET ",
+      "id": 28
     }
   ]
 }
