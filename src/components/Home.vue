@@ -1,9 +1,11 @@
 <template>
   <div class="container mt-5">
+      <form @submit="post" >
     <div class="input-group mb-3">
+    
       <span class="input-group-text">$</span>
       <input
-        type="text"
+        type="number"
         class="form-control"
         aria-label="Amount (to the nearest dollar)"
         v-model="product.price"
@@ -30,13 +32,14 @@
     />
     <b-form-select v-model="product.cate" :options="options"></b-form-select>
     <button
+type="submit"
       class="btn mt-3"
       style="background:linear-gradient(to right, #fc87da, #cb94ef, #41e0e7, #28f6c2); color: #FDFFB6;
   font-weight: bold;"
-      @click="post"
     >
       Gönder
     </button>
+    </form>
     <hr />
     <Page />
   </div>
@@ -59,7 +62,7 @@ export default {
         { value: "women clothing", text: "women clothing" },
       ],
       product: {
-        price: "",
+        price: 0,
         title: "",
         des: "",
         image: "",

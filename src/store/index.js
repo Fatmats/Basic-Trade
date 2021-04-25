@@ -8,9 +8,12 @@ export default new Vuex.Store({
   state: {
     data: [],
     pro:[],
-    removed:[]
   },
-  
+  getters:{
+    GetPro(state){
+      return state.pro
+    }
+  },
   mutations: {
     MutationAxios(state, payload) {
       state.data = payload
@@ -21,7 +24,6 @@ export default new Vuex.Store({
       console.log(state.pro);
     },
     clearCookie(state,payload){
-      console.log(state.pro)
      state.pro.splice(payload,1)
      Vue.$cookies.set('post',JSON.stringify(state.pro),"30d" )
      console.log(state.pro)
