@@ -9,14 +9,18 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/components/Home.vue'),
+    component: () => import('@/components/Page.vue'),
   },
   {
       path:'/sepet',
       name:'Sepet',
       component:()=> import('@/components/Box.vue')
-  }
- 
+  },
+  {
+    path:'/list',
+    name:'List',
+    component:()=> import('@/components/Home.vue')
+}
 
 ]
 

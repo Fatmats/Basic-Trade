@@ -1,15 +1,33 @@
 <template>
   <div id="app">
     <div>
-      <nav id="navbar" class="d-flex justify-content-center mb-5">
-        <router-link class="ml-5 mt-1" :to="{ name: 'Sepet' }">
-          <font-awesome-icon icon="shopping-basket" class="shop" />
-        </router-link>
-        <router-link class="ml-5" :to="{ name: 'Home' }">
-          <b-icon-shop class="shop"> <span>Anasayfa</span> </b-icon-shop>
-        </router-link>
-        <p><span>dünya dünya</span></p>
-      </nav>
+      <div>
+        <b-navbar id="navbar" toggleable="lg">
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+          <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav>
+              <router-link :to="{ name: 'Home' }">
+                <span><b-icon-shop class="shop" /> Anasayfa </span>
+              </router-link>
+              <router-link :to="{ name: 'List' }">
+                <span><b-icon icon="card-list" class="shop" /> Ürün Ekle</span>
+              </router-link>
+            </b-navbar-nav>
+
+            <!-- Right aligned nav items -->
+            <b-navbar-nav class="ml-auto">
+              <router-link class="ml-5 mt-1" :to="{ name: 'Sepet' }">
+                <span
+                  ><b-icon icon="cart3"
+                    class="shop"
+                  />Sepet <small id="small">{{GetNum}}</small></span
+                >
+              </router-link>
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
+      </div>
     </div>
 
     <router-view />
@@ -17,17 +35,30 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
 export default {
   name: "App",
-  methods: {},
+  computed: {
+    ...mapGetters(["GetNum"]),
+  },
+  updated(){
+    console.log("geldik");
+    const el =document.getElementById("small")
+       if(this.$route.name==="Sepet"){
+         el.style.display="none"
+       }else{
+el.style.display="inline"
+       }
+  },
   created() {
+ console.log("olduk");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 10) {
         document
           .getElementById("navbar")
           .setAttribute(
             "style",
-            "background:linear-gradient(90deg, #fc87da, #cb94ef, #41e0e7, #28f6c2); animation: color 3s ease; "
+            "background:linear-gradient(90deg, #fc87da, #cb94ef, #41e0e7, #28f6c2); animation: color 3s ease; opacity:0.8"
           );
       } else {
         document.getElementById("navbar").removeAttribute("style");
@@ -42,26 +73,36 @@ body {
   background-color: #efeaed;
 }
 .shop {
-  font-size: 42px;
-  color: hsla(0, 100%, 50%, 0.3);
-  transition: all 1s ease;
+  font-size: 31px;
+  transition: all 1s ease-in-out;
+  text-decoration: none;
+  margin-left: 9px;
 }
-
-p span::after {
-  content: " .";
-  width: 0%;
-  opacity: 0;
-  position: absolute;
-  padding-left: 5px;
+.shop:hover {
+  font-size: 35px;
+  color: brown;
 }
-p:hover {
-  box-shadow: 0 4px 8px 0 gray, 0 6px 20px 0 gray;
+span {
+    color: #05a1a5f5;
+    transition: all 1s ease-in-out;
+    text-decoration: none;
+    font-weight: bold;
+  &:hover {
+    text-decoration: none;
+  }
 }
-p:hover span::after {
-  opacity: 1;
-  width: 100%;
+#small{
+  font-size: 80%;
+    font-weight: 400;
+    background-color: white;
+    border-radius: 50px;
+    width: 29px;
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    padding-inline: 7px;
 }
-nav {
+#navbar {
   position: fixed;
   z-index: 12;
   width: 100%;
@@ -72,7 +113,7 @@ nav {
       opacity: 0;
     }
     to {
-      opacity: 1;
+      opacity: 0.8;
     }
   }
 }

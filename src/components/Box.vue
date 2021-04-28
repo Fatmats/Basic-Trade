@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-5">
+  <div class="mt-5 container ">
     <div
-      class="container p-0 row g-0 mb-3"
+      class="p-0 row g-0 mb-3"
       v-for="(i, index) in pro"
       :key="i.title"
     >
